@@ -1,0 +1,26 @@
+extends ../layout/admin
+
+block contenido
+    div(class="py-10")
+        h1(class="text-4xl my-10 text-center font-extrabold") Bienes
+            span(class="font-normal") Raices
+        h2(class="text-xl text-center font-extrabold")= pagina
+
+        a(href="/mis-propiedades" class="rounded bg-indigo-600 hover:bg-indigo-800 py-2 px-10 text-white uppercase text-sm font-bold text-center inline-block my-5 w-full sm:w-auto") Volver
+
+        //- pre= JSON.stringify(mensajes, undefined,2)
+        div(class="mx-auto max-w-4xl bg-white shadow")
+            if mensajes.length 
+                ul 
+                    each mensaje in mensajes
+                        li(class="border-gray-200 border-b p-5")
+                            p(class="font-bold text-gray-800") Nombre: 
+                                span(class="font-normal")= mensaje.usuario.name
+                            p(class="font-bold text-gray-800") Email: 
+                                span(class="font-normal")= mensaje.usuario.email
+                            p(class="font-bold text-gray-800") Mensaje: 
+                                span(class="font-normal")= mensaje.mensaje
+                            p(class="font-bold text-gray-800") Enviado el: 
+                                span(class="font-normal")= formatearFecha(mensaje.createdAt)
+            else 
+                p(class="text-center text-gray-600 p-5") No hay mensajes

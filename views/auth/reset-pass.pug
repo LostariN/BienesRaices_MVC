@@ -1,0 +1,26 @@
+extends ../layout/index
+
+block contenido
+    div(class="py-10")
+        h1(class="text-4xl my-10 text-center font-extrabold") Bienes
+            span(class="font-normal") Raices
+        h2(class="text-xl text-center font-extrabold")= pagina
+
+        if errores 
+            div(class="max-w-md mx-auto my-10")
+                each error in errores
+                    p(class="bg-red-600 rounded-lg text-center p-2 mb-1 uppercase text-white text-xs font-bold")= error.msg
+
+        div(class="mt-8 mx-auto max-w-md")
+            div(class="bg-gray-200 shadow py-8 px-4") 
+                form(class="space-y-5" method="POST" )
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    div 
+                        label(class="block text-sm uppercase text-gray-500 mb-2 font-bold" for="password") Nueva password
+                        input(id="password" class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400" placeholder="Tu password" type="text" name="password")
+                    div 
+                        label(class="block text-sm uppercase text-gray-500 mb-2 font-bold" for="repetir_pass") Repite tu password
+                        input(id="repetir_pass" class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400" placeholder="Repite tu password" type="text" name="repetir_pass")
+
+                    
+                    input(class="w-full bg-indigo-600 hover:bg-indigo-700 rounded-md py-3  font-bold cursor-pointer text-white" type="submit" value="Cambiar Password")

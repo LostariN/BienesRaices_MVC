@@ -1,0 +1,18 @@
+extends ../layout/admin
+
+block styles
+   link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.css")
+block contenido
+    div(class="py-10")
+        h1(class="text-4xl my-10 text-center font-extrabold") Bienes
+            span(class="font-normal") Raices
+        h2(class="text-xl text-center font-extrabold")= pagina
+        
+        div(class="bg-white shadow py-8 px-4 rounded mx-auto max-w-4xl my-10 md:px-10")
+            form(id="imagen" method="post" class="space-y-8 dropzone border-dashed border-2 w-full min-h-96 h-auto rounded flex-col justify-center items-center" action=`/propiedades/agregar-imagen/${prop.id}`) 
+                
+                input(type="hidden" name="_csrf" value=csrfToken)
+               
+            button(id="publicar" class="w-full text-white rounded py-3 mt-5 bg-indigo-600 hover:bg-indigo-700 font-bold uppercase cursor-pointer" type="button") Publicar propiedad
+block scripts 
+    script(src="/js/agregarImagen.js") 
